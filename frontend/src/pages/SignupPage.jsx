@@ -45,9 +45,10 @@ export default function SignupPage({ onLogin }) {
         return;
       }
 
-      // ✅ PASO 3: GUARDAR TOKEN Y ACTUALIZAR ESTADO
+      // ✅ PASO 3: GUARDAR TOKEN Y USERNAME Y ACTUALIZAR ESTADO
       if (dataLogin.token) {
         localStorage.setItem("userToken", dataLogin.token);
+        localStorage.setItem("username", dataLogin.username || username);
       }
 
       // ✅ PASO 4: LLAMAR A onLogin PARA ACTUALIZAR ESTADO
@@ -55,10 +56,8 @@ export default function SignupPage({ onLogin }) {
         onLogin();
       }
 
-      alert("¡Registro exitoso! Bienvenido " + username);
-
-      // ✅ PASO 5: REDIRIGIR AL MENÚ PRINCIPAL
-      navigate("/");
+      // ✅ PASO 5: REDIRIGIR AL PERFIL DEL USUARIO
+      navigate("/perfil");
     } catch (err) {
       console.error(err);
       setError("No se pudo conectar con el servidor");
