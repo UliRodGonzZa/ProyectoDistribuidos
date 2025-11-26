@@ -14,6 +14,7 @@ import LoginPage from "./pages/LoginPage"; // Login de admin
 import LoginPageU from "./pages/LoginPageU"; // Login de usuario
 import SignupPage from "./pages/SignupPage"; // Registro de usuario
 import AdminPanelPage from "./pages/AdminPanelPage";
+import PerfilUsuarioPage from "./pages/PerfilUsuarioPage"; // Perfil de usuario
 
 function ProtectedRoute({ isAuthenticated, children }) {
   if (!isAuthenticated) {
