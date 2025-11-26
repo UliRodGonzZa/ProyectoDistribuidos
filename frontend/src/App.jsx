@@ -97,25 +97,25 @@ function App() {
           <Route
             path="/admin"
             element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <AdminRoute isAdmin={isAdmin}>
                 <AdminPanelPage />
-              </ProtectedRoute>
+              </AdminRoute>
             }
           />
           <Route
             path="/sugerencias"
             element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <AdminRoute isAdmin={isAdmin}>
                 <SugerenciasPage />
-              </ProtectedRoute>
+              </AdminRoute>
             }
           />
           <Route
             path="/frases-dia"
             element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <AdminRoute isAdmin={isAdmin}>
                 <FrasesDiaPage />
-              </ProtectedRoute>
+              </AdminRoute>
             }
           />
           <Route path="*" element={<Navigate to="/" replace />} />
