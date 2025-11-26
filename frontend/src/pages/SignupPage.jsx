@@ -16,7 +16,7 @@ export default function SignupPage({ onLogin }) {
     setLoading(true);
 
     try {
-      // ✅ PASO 1: REGISTRAR USUARIO
+      // registramos user
       const resRegister = await fetch(`${API_URL}/api/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -30,7 +30,7 @@ export default function SignupPage({ onLogin }) {
         return;
       }
 
-      // ✅ PASO 2: HACER LOGIN AUTOMÁTICO
+      // login automaitico
       const resLogin = await fetch(`${API_URL}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -45,18 +45,18 @@ export default function SignupPage({ onLogin }) {
         return;
       }
 
-      // ✅ PASO 3: GUARDAR TOKEN Y USERNAME Y ACTUALIZAR ESTADO
+      // guardamos token y username y actualizamos estado
       if (dataLogin.token) {
         localStorage.setItem("userToken", dataLogin.token);
         localStorage.setItem("username", dataLogin.username || username);
       }
 
-      // ✅ PASO 4: LLAMAR A onLogin PARA ACTUALIZAR ESTADO
+      // llamada a onLogin para actualizar estado en App.jsx
       if (onLogin) {
         onLogin();
       }
 
-      // ✅ PASO 5: REDIRIGIR AL PERFIL DEL USUARIO
+      // redirregir al perfil del usuario
       navigate("/perfil");
     } catch (err) {
       console.error(err);

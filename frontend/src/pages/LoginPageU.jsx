@@ -29,13 +29,13 @@ export default function LoginPageU({ onLogin }) {
         return;
       }
 
-      // ✅ GUARDAR TOKEN Y USERNAME EN LOCALSTORAGE
+      //  Guardamos token en localStorage
       if (data.token) {
         localStorage.setItem("userToken", data.token);
         localStorage.setItem("username", data.username || username);
       }
 
-      // ✅ LLAMAR A onLogin PARA ACTUALIZAR ESTADO
+      // Llamar a onLogin para actualizar estado en App.jsx
       if (onLogin) {
         onLogin();
       }
