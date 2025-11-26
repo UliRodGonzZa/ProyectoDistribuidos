@@ -14,14 +14,15 @@ import secrets
 from auth import auth_bp  # Importamos el blueprint de auth.py
 
 app = Flask(__name__)
-CORS(app)
 
-# Conexión a Redis (localhost en este entorno)
-r = redis.Redis(host="localhost", port=6379, decode_responses=True)
+# Conexión a Redis (nombre del servicio en docker-compose)
+r = redis.Redis(host="redis", port=6379, decode_responses=True)
 
-
-#  Blueprint para las rutas de autenticación
+# Registrar el blueprint ANTES de configurar CORS
 app.register_blueprint(auth_bp)
+
+# Configurar CORS para permitir todas las peticiones
+CORS(app, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]}})
 
 
 
