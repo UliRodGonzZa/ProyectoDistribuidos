@@ -76,6 +76,21 @@ function Header() {
 	</NavLink>
         </nav>
 
+        {/* Botones de login */}
+        <div className="hidden md:flex items-center gap-3">
+          <NavLink
+            to="/login"
+            className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors"
+          >
+            Iniciar sesión
+          </NavLink>
+          <NavLink
+            to="/register"
+            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+          >
+            Registrarse
+          </NavLink>
+        </div>
 
         {/* Botón hamburguesa (solo móvil) */}
         <button
