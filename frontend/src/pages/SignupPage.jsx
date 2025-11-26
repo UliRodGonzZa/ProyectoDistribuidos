@@ -41,7 +41,7 @@ export default function SignupPage({ onLogin }) {
       if (!resLogin.ok) {
         // Si el login falla, redirigir a login manual
         alert("Usuario registrado. Por favor inicia sesión.");
-        navigate("/login");
+        navigate("/login-usuario");
         return;
       }
 
