@@ -210,7 +210,7 @@ function Header() {
             </li>
             <li className="border-t border-slate-200 mt-2 pt-2">
               <NavLink
-                to="/login"
+                to="/login-usuario"
                 className="block text-center px-4 py-2 text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors"
                 onClick={cerrarMenu}
               >
