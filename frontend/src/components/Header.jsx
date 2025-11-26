@@ -261,22 +261,54 @@ function Header({ isAuthenticated, username, onLogout }) {
               </NavLink>
             </li>
             <li className="border-t border-slate-200 mt-2 pt-2">
-              <NavLink
-                to="/login-usuario"
-                className="block text-center px-4 py-2 text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors"
-                onClick={cerrarMenu}
-              >
-                Iniciar sesión
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/register"
-                className="block text-center px-4 py-2 text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors mx-4"
-                onClick={cerrarMenu}
-              >
-                Registrarse
-              </NavLink>
+              {isAuthenticated && username ? (
+                <>
+                  <div className="px-4 py-2 text-center">
+                    <div className="flex items-center justify-center gap-2 mb-2">
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-sky-400 flex items-center justify-center text-white text-lg font-bold">
+                        {username.charAt(0).toUpperCase()}
+                      </div>
+                      <span className="text-lg font-medium text-slate-700">{username}</span>
+                    </div>
+                  </div>
+                  <NavLink
+                    to="/perfil"
+                    className="block text-center px-4 py-2 text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors"
+                    onClick={cerrarMenu}
+                  >
+                    Mi Perfil
+                  </NavLink>
+                  <button
+                    onClick={() => {
+                      cerrarMenu();
+                      onLogout();
+                      navigate("/");
+                    }}
+                    className="w-full text-center px-4 py-2 text-lg font-medium text-red-600 hover:text-red-700 transition-colors"
+                  >
+                    Cerrar sesión
+                  </button>
+                </>
+              ) : (
+                <>
+                  <NavLink
+                    to="/login-usuario"
+                    className="block text-center px-4 py-2 text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors"
+                    onClick={cerrarMenu}
+                  >
+                    Iniciar sesión
+                  </NavLink>
+                  <li>
+                    <NavLink
+                      to="/register"
+                      className="block text-center px-4 py-2 text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors mx-4"
+                      onClick={cerrarMenu}
+                    >
+                      Registrarse
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </li>
           </ul>
         </nav>
