@@ -16,7 +16,7 @@ function ForoPage() {
   const [ordenamiento, setOrdenamiento] = useState("recientes");
 
   // Usar variable de entorno como en tus otros componentes
-  const API_URL = window.VITE_API_URL || "http://localhost:5000";
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
   useEffect(() => {
     cargarPublicaciones();
