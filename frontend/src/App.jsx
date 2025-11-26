@@ -17,7 +17,7 @@ import AdminPanelPage from "./pages/AdminPanelPage";
 
 function ProtectedRoute({ isAuthenticated, children }) {
   if (!isAuthenticated) {
-    return <Navigate to="/LoginPageU" replace />;
+    return <Navigate to="/login-usuario" replace />;
   }
   return children;
 }
