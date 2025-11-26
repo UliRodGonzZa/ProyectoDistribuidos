@@ -79,7 +79,7 @@ function Header() {
         {/* Botones de login */}
         <div className="hidden md:flex items-center gap-3">
           <NavLink
-            to="/login"
+            to="/login-usuario"
             className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors"
           >
             Iniciar sesión
