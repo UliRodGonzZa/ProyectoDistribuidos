@@ -1,0 +1,29 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Chip -->
+  <rect x="14" y="14" width="36" height="36" rx="8"
+    fill="none" stroke="url(#grad2)" stroke-width="3"/>
+
+  <!-- Patitas del chip -->
+  <g stroke="url(#grad2)" stroke-width="3">
+    <line x1="32" y1="6"  x2="32" y2="14"/>
+    <line x1="32" y1="50" x2="32" y2="58"/>
+    <line x1="6"  y1="32" x2="14" y2="32"/>
+    <line x1="50" y1="32" x2="58" y2="32"/>
+  </g>
+
+  <!-- Frecuencia cardiaca dentro del chip -->
+  <path d="M18 32 h6 l4 -8 l4 16 l4 -8 h10"
+    fill="none"
+    stroke="url(#grad2)"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

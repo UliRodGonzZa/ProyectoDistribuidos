@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: ia-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+
+  frontend:
+    build: ./frontend
+    container_name: ia-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      # Ahora apuntamos al proxy (localhost) en lugar de al puerto 5000 directo
+      - VITE_API_URL=http://localhost
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app          
+      - /app/node_modules        
+
+  redis:
+    image: redis:latest
+    container_name: ia-redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+
+  proxy:
+    image: nginx:alpine
+    container_name: ia-proxy
+    ports:
+      - "80:80"                    # Todo entra por http://localhost
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - backend
