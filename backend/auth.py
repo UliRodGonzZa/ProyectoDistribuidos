@@ -6,7 +6,7 @@ import hashlib
 auth_bp = Blueprint('auth', __name__)
 
 # ✅ CREAR CONEXIÓN A REDIS
-r = redis.Redis(host="localhost", port=6379, decode_responses=True)
+r = redis.Redis(host="redis", port=6379, decode_responses=True)
 
 @auth_bp.route("/api/register", methods=["POST"])
 def register():
