@@ -25,12 +25,15 @@ function ProtectedRoute({ isAuthenticated, children }) {
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [username, setUsername] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("userToken");
+    const adminToken = localStorage.getItem("adminToken");
     const storedUsername = localStorage.getItem("username");
     setIsAuthenticated(!!token);
+    setIsAdmin(!!adminToken);
     setUsername(storedUsername || "");
   }, []);
 
@@ -41,10 +44,17 @@ function App() {
     setUsername(storedUsername || "");
   };
 
+  const handleAdminLogin = () => {
+    const adminToken = localStorage.getItem("adminToken");
+    setIsAdmin(!!adminToken);
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("userToken");
     localStorage.removeItem("username");
+    localStorage.removeItem("adminToken");
     setIsAuthenticated(false);
+    setIsAdmin(false);
     setUsername("");
   };
 
