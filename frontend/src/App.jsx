@@ -45,8 +45,11 @@ function App() {
           <Route path="/equipo" element={<EquipoPage />} />
           <Route path="/foro" element={<ForoPage />} />
           <Route path="/buzon-mejoras" element={<BuzonMejorasPage />} />
-          <Route path="/login" element={<LoginPageU onLogin={handleLogin} />} />
-          {/* ✅ AGREGAR onLogin a SignupPage */}
+          {/* Login de admin */}
+          <Route path="/login" element={<LoginPage />} />
+          {/* Login de usuario */}
+          <Route path="/login-usuario" element={<LoginPageU onLogin={handleLogin} />} />
+          {/* Registro de usuario */}
           <Route
             path="/register"
             element={<SignupPage onLogin={handleLogin} />}
