@@ -1,9 +1,11 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/logo-ml-chip.svg";
 
-function Header() {
+function Header({ isAuthenticated, username, onLogout }) {
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [menuUsuarioAbierto, setMenuUsuarioAbierto] = useState(false);
+  const navigate = useNavigate();
 
   const getNavClasses = (isActive) =>
     [
