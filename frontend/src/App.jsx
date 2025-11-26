@@ -23,6 +23,13 @@ function ProtectedRoute({ isAuthenticated, children }) {
   return children;
 }
 
+function AdminRoute({ isAdmin, children }) {
+  if (!isAdmin) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+}
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
