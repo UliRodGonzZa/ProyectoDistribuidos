@@ -123,7 +123,7 @@ export default function SignupPage({ onLogin }) {
 
       <p className="text-center text-sm text-slate-500 mt-4">
         ¿Ya tienes cuenta?{" "}
-        <a href="/login" className="text-sky-600 hover:underline">
+        <a href="/login-usuario" className="text-sky-600 hover:underline">
           Inicia sesión aquí
         </a>
       </p>
