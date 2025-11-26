@@ -196,6 +196,36 @@ function Header() {
                 Foro
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/buzon-mejoras"
+                className={({ isActive }) =>
+                  getNavClasses(isActive) +
+                  " block text-center px-4 py-2 text-xl"
+                }
+                onClick={cerrarMenu}
+              >
+                Buzón de mejoras
+              </NavLink>
+            </li>
+            <li className="border-t border-slate-200 mt-2 pt-2">
+              <NavLink
+                to="/login"
+                className="block text-center px-4 py-2 text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors"
+                onClick={cerrarMenu}
+              >
+                Iniciar sesión
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/register"
+                className="block text-center px-4 py-2 text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors mx-4"
+                onClick={cerrarMenu}
+              >
+                Registrarse
+              </NavLink>
+            </li>
           </ul>
         </nav>
       )}
