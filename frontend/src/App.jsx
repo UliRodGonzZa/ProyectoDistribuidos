@@ -25,19 +25,32 @@ function ProtectedRoute({ isAuthenticated, children }) {
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("userToken");
+    const storedUsername = localStorage.getItem("username");
     setIsAuthenticated(!!token);
+    setUsername(storedUsername || "");
   }, []);
 
   const handleLogin = () => {
-    setIsAuthenticated(true);
+    const token = localStorage.getItem("userToken");
+    const storedUsername = localStorage.getItem("username");
+    setIsAuthenticated(!!token);
+    setUsername(storedUsername || "");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("userToken");
+    localStorage.removeItem("username");
+    setIsAuthenticated(false);
+    setUsername("");
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
-      <Header />
+      <Header isAuthenticated={isAuthenticated} username={username} onLogout={handleLogout} />
       <main className="flex-1 px-4 py-6 md:py-10">
         <Routes>
           <Route path="/" element={<MenuPage />} />
@@ -54,6 +67,15 @@ function App() {
           <Route
             path="/register"
             element={<SignupPage onLogin={handleLogin} />}
+          />
+          {/* Perfil de usuario */}
+          <Route
+            path="/perfil"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <PerfilUsuarioPage />
+              </ProtectedRoute>
+            }
           />
           <Route
             path="/admin"
