@@ -22,7 +22,7 @@ function FrasesDiaPage() {
   const [modalFeedbackMensaje, setModalFeedbackMensaje] = useState("");
   const [modalFeedbackEsError, setModalFeedbackEsError] = useState(false);
 
-  const API_URL = window.VITE_API_URL || "http://localhost:5000";
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
   const cargarFrases = async () => {
     setCargando(true);
