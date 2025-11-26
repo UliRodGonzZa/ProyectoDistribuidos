@@ -29,9 +29,10 @@ export default function LoginPageU({ onLogin }) {
         return;
       }
 
-      // ✅ GUARDAR TOKEN EN LOCALSTORAGE
+      // ✅ GUARDAR TOKEN Y USERNAME EN LOCALSTORAGE
       if (data.token) {
         localStorage.setItem("userToken", data.token);
+        localStorage.setItem("username", data.username || username);
       }
 
       // ✅ LLAMAR A onLogin PARA ACTUALIZAR ESTADO
@@ -39,8 +40,8 @@ export default function LoginPageU({ onLogin }) {
         onLogin();
       }
 
-      alert(data.message);
-      navigate("/"); // Redirigir al menú principal
+      // Redirigir al perfil del usuario
+      navigate("/perfil");
     } catch (err) {
       console.error(err);
       setError("No se pudo conectar con el servidor");
