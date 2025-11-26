@@ -70,7 +70,7 @@ function App() {
           <Route path="/foro" element={<ForoPage />} />
           <Route path="/buzon-mejoras" element={<BuzonMejorasPage />} />
           {/* Login de admin */}
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage onLogin={handleAdminLogin} />} />
           {/* Login de usuario */}
           <Route path="/login-usuario" element={<LoginPageU onLogin={handleLogin} />} />
           {/* Registro de usuario */}
